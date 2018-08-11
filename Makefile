@@ -1,12 +1,17 @@
 CC = gcc
 AR = ar
+
+OPTFLAGS = -Ofast -flto
 FLAGS = -g -flto
 
 .PHONY = all clean
 
 TESTS = f477 radius-calculator euclidean-calculator
 
-all: build/libwgs84.a $(addprefix build/,$(TESTS))
+all: build/libwgs84.so build/libwgs84.a $(addprefix build/,$(TESTS))
+
+build/libwgs84.so: build/wgs84.o | build
+	$(CC) $(OPTFLAGS) build/wgs84.o -shared -fPIC -o build/libwgs84.so
 
 build/libwgs84.a: build/wgs84.o | build
 	$(AR) rcs build/libwgs84.a build/wgs84.o
