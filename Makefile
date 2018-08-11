@@ -4,7 +4,7 @@ FLAGS = -g
 
 .PHONY = all clean
 
-TESTS = f477 radius-calculator
+TESTS = f477 radius-calculator euclidean-calculator
 
 all: build/libwgs84.a $(addprefix build/,$(TESTS))
 
