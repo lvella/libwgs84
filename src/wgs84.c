@@ -23,19 +23,19 @@ static const unsigned l_value = 65341;
 static const unsigned _361 = 361;
 
 static const double cc[] = {
-	#include "consts/cc.inc"
+	#include "cc.inc"
 };
 
 static const double cs[] = {
-	#include "consts/cs.inc"
+	#include "cs.inc"
 };
 
 static const double hc[] = {
-	#include "consts/hc.inc"
+	#include "hc.inc"
 };
 
 static const double hs[] = {
-	#include "consts/hs.inc"
+	#include "hs.inc"
 };
 
 static double hundu(unsigned nmax, double p[l_value + 1],

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "../wgs84.h"
+#include <wgs84.h>
 
 int main(int argc, char *argv[])
 {
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	const double latitude = atof(argv[1]) * to_rad;
 	const double longitude = atof(argv[2]) * to_rad;
 
-	const long double wgs84 = wgs84_ellipsoid_radius(latitude);
+	const long double wgs84 = wgs84_ellipsoid_geocentric_radius(latitude);
 	const double egm96 = egm96_displacement(latitude, longitude);
 	printf("WGS84 ellipsoid radius: %Lf km\n"
 		"EGM96 displacement: %f m\n"

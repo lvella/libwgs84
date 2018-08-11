@@ -3,13 +3,26 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "../wgs84.h"
+#include <wgs84.h>
 
-int main()
+int main(int argc, char *argv[])
 {
+	if(argc < 2) {
+		fprintf(stderr, "Missing argument. Usage:\n"
+			"%s INPUT.DAT [OUTF477.DAT]\n", argv[0]);
+		return 1;
+	}
+
+	const char *outfname;
+	if(argc > 2) {
+		outfname = argv[2];
+	} else {
+		outfname = "OUTF477.DAT";
+	}
+
 	const double rad = M_PI / 180.0;
-	FILE *in = fopen("INPUT.DAT", "r");
-	FILE *out = fopen("OUTF477.DAT", "w");
+	FILE *in = fopen(argv[1], "r");
+	FILE *out = fopen(outfname, "w");
 
 	double flat, flon;
 

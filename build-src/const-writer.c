@@ -24,7 +24,7 @@ static void ddump(const char *name, double* v, size_t bytesize)
     size_t size = bytesize / sizeof(double);
 
     char fname[50];
-    snprintf(fname, 50, "%s.inc", name);
+    snprintf(fname, 50, "build/%s.inc", name);
 
     FILE *fd = fopen(fname, "w");
 
@@ -37,7 +37,7 @@ static void ddump(const char *name, double* v, size_t bytesize)
 
 static void dhcsin(unsigned nmax, double hc[l_value + 1], double hs[l_value + 1])
 {
-	FILE* f_12 = fopen("EGM96", "rb");	/*potential coefficient file */
+	FILE* f_12 = fopen("data/EGM96", "rb");	/*potential coefficient file */
 	int n, m;
 	double j2, j4, j6, j8, j10, c, s, ec, es;
 /*the even degree zonal coefficients given below were computed for the
@@ -75,8 +75,11 @@ void init_arrays(void)
 {
 	int ig, i, n, m;
 	double t1, t2;
-	FILE *f_1 = fopen("CORCOEF", "rb");	/*correction coefficient file:
-					   modified with 'sed -e"s/D/e/g"' to be read with fscanf */
+
+	/*correction coefficient file:
+	    modified with 'sed -e"s/D/e/g"' to be read with fscanf */
+	FILE *f_1 = fopen("data/CORCOEF", "rb");
+
 	nmax = 360;
 	for (i = 1; i <= l_value; i++)
 		cc[i] = cs[i] = 0;
