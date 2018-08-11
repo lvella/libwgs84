@@ -1,6 +1,6 @@
 CC = gcc
 AR = ar
-FLAGS = -g
+FLAGS = -g -flto
 
 .PHONY = all clean
 
